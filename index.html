@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PLEASE DONATE ALC!!!</title>
+<style>
+  body { margin: 0; background: #fff; color: #111; font-family: "Comic Sans MS", cursive, sans-serif; }
+  .top { background: #333; color: white; padding: 9px 18px; font: 14px Arial, sans-serif; border-bottom: 5px solid #aaa; }
+  .top span { display:inline-block; width:12px;height:12px;border-radius:50%;margin-right:7px;background:#ff4545; }
+  .top span:nth-child(2){background:#ffd52a}.top span:nth-child(3){background:#23d45b}
+  .page { display:none; padding: 20px 3vw 60px; text-align:center; }
+  .page.active { display:block; }
+  h1 { color:#f00; font-size:clamp(32px,6vw,66px); line-height:1.04; margin: 24px 0 10px; text-shadow: 2px 3px #ffb5b5; transform: rotate(-1deg); }
+  h1 u { color:blue; text-decoration-thickness:5px; }
+  .sticker { display:inline-block; font-size:55px; padding:8px; border:4px dashed #aaa; background:#fff6a7; transform:rotate(7deg); }
+  .sad { transform:rotate(-8deg); background:#e9e9e9; }
+  .headline { display:flex; align-items:center; justify-content:space-around; gap:12px; flex-wrap:wrap; }
+  p { font-size:clamp(18px,2.5vw,29px); }
+  .sub { margin-top:42px; }
+  .buttons { display:flex; justify-content:center; gap:35px; flex-wrap:wrap; margin:45px auto 0; max-width:1100px; }
+  button { font-family:inherit; cursor:pointer; border:4px solid black; border-radius:9px; padding:18px 25px; font-size:clamp(17px,2vw,26px); min-height:120px; max-width:465px; box-shadow:5px 6px 0 #999; }
+  button:active { transform:translate(4px,4px); box-shadow:1px 2px 0 #999; }
+  .no { background:#ff1818; color:#000; }
+  .yes { background:#20e64d; color:#000; }
+  .tiny { color:#6a00ad; text-decoration:underline; cursor:pointer; display:block; margin:30px auto; font-size:20px; }
+  .marquee { color:#f000ff; font-weight:bold; font-size:22px; animation:wobble 1.2s infinite alternate; }
+  @keyframes wobble { from{transform:rotate(-1deg)} to{transform:rotate(1deg)} }
+  .formbox { margin:40px auto; padding:24px; max-width:620px; background:#f8f8f8; border:5px ridge #999; text-align:left; transform:rotate(.4deg); }
+  label { display:block; font-size:22px; margin:18px 0 7px; }
+  input, textarea, select { width:100%; box-sizing:border-box; font:18px Arial,sans-serif; padding:12px; border:3px inset #bbb; background:#fffed5; }
+  .submit { margin-top:22px; min-height:unset; background:#ff7dff; }
+  .back { min-height:unset; background:#ccc; font-size:18px; margin-top:10px; }
+  #confirmation { display:none; margin-top:20px; background:yellow; border:3px dashed red; padding:12px; font-size:20px; }
+  .disclaimer { font:12px Arial,sans-serif; color:#666; margin-top:45px; }
+</style>
+</head>
+<body>
+<div class="top"><span></span><span></span><span></span>  DONATE TO COLLEGE STUDENTS — totally real website</div>
+
+<section id="home" class="page active">
+  <div class="headline">
+    <div class="sticker sad">☹<br><small>graduated<br>and broke</small></div>
+    <div>
+      <h1>donate to<br><u>poor helpless alc-less college students</u></h1>
+    </div>
+    <div class="sticker">🥤<br><small>pls help</small></div>
+  </div>
+  <p class="sub">these poor college students are struggling...</p>
+  <p>they need your help. donate some alc today!</p>
+  <div class="marquee">🚨 URGENT STUDENT THIRST EMERGENCY 🚨</div>
+  <div class="buttons">
+    <button class="no" onclick="alert('keys')">no, i am a heartless person who hopes these college students die of thirst</button>
+    <button class="yes" onclick="showPage('donate')">I will donate some alc</button>
+  </div>
+  <a class="tiny" onclick="showPage('donate')">(go to next page to choose where to send the alc)</a>
+  <p style="font-size:14px;color:#777">100% questionable design • 0% professional web development</p>
+</section>
+
+<section id="donate" class="page">
+  <h1 style="color:#00a000">THANK YOU, GENEROUS CITIZEN!!!</h1>
+  <p>Where should the alc be sent from?</p>
+  <div class="formbox">
+    <form id="donationForm">
+      <label for="source">Where are you sending it from? (store / location)</label>
+      <input id="source" name="source" placeholder="e.g. the place down the street" required>
+      <label for="destination">Where should it go? (optional)</label>
+      <input id="destination" name="destination" placeholder="e.g. the dorm">
+      <label for="notes">Additional extremely important instructions</label>
+      <textarea id="notes" name="notes" rows="3" placeholder="write something here..."></textarea>
+      <label for="amount">Donation amount</label>
+      <select id="amount" name="amount">
+        <option>One (1) generous contribution</option>
+        <option>A few</option>
+        <option>Enough to save the entire campus</option>
+        <option>I just wanted to click the button</option>
+      </select>
+      <button class="submit" type="submit">SUBMIT DONATION PLAN!!!</button>
+    </form>
+    <div id="confirmation">PLAN RECORDED ON THIS PAGE. No payment or delivery has been made.</div>
+  </div>
+  <button class="back" onclick="showPage('home')">← go back to the ugly homepage</button>
+  <p class="disclaimer">This is a joke/demo website. It does not collect or send your information, process payments, or arrange alcohol delivery. Follow local laws and campus rules.</p>
+</section>
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+document.getElementById('donationForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('confirmation').style.display = 'block';
+});
+</script>
+</body>
+</html>
